@@ -30,18 +30,18 @@ def resol(cuadricula, fil, col, num):
                 return False
     return True
 
-def suduko(cuadricula, fil, col):
+def sudoku(cuadricula, fil, col):
     if (fil == M - 1 and col == M):
         return True
     if col == M:
         fil += 1
         col = 0
     if cuadricula[fil][col] > 0:
-        return suduko(cuadricula, fil, col + 1)
+        return sudoku(cuadricula, fil, col + 1)
     for num in range(1, M + 1, 1): 
         if resol(cuadricula, fil, col, num):
             cuadricula[fil][col] = num
-            if suduko(cuadricula, fil, col + 1):
+            if sudoku(cuadricula, fil, col + 1):
                 return True
         cuadricula[fil][col] = 0
     return False
